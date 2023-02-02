@@ -8,8 +8,13 @@ let pokemonRepository = (function () {
     
     /* add() adds a new pokemon item into array */
     function add(pokemon) {
+        if (pokemon.typeof === Object.keys(pokemonList)) { /*make sure item is actual object*/
         return pokemonList.push(pokemon);
+        } else {
+        console.log("This is not an object!");
+        }
     }
+
 
     /* getAll() returns each item in array */
     function getAll() {

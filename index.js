@@ -21,20 +21,26 @@ let pokemonRepository = (function () {
         return pokemonList;
     }
    
+/* addListItem() displays array list as a button*/
+    function addListItem(pokemon){
+        const listDisplay = document.querySelector(".pokemon-list");
+        const listItem = document.createElement("li");
+        let button = document.createElement("button");
+        button.innerText = pokemon.name;
+        button.classList.add("btn-styling");
+        listItem.appendChild(button);
+        listDisplay.appendChild(listItem);
+    }
+
     return {
         add: add,
         getAll: getAll,
+        addListItem: addListItem,
     }; 
 })();
 
 /* forEach() loop returns array items outside of expression by using getAll() */
 pokemonRepository.getAll().forEach(function(pokemon) {
-    const listDisplay = document.querySelector(".pokemon-list");
-    const listItem = document.createElement("li");
-    let button = document.createElement("button");
-    button.innerText = pokemon.name;
-    button.classList.add("btn-styling");
-    listItem.appendChild(button);
-    listDisplay.appendChild(listItem);
+   pokemonRepository.addListItem(pokemon);  // calls needed function from within expression
 });
 

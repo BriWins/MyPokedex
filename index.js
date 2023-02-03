@@ -1,5 +1,6 @@
 /* IIFE to prevent globalness */
 let pokemonRepository = (function () {
+  
     const pokemonList = [
         {name: "Pikachu", height: 1, type: ["static","lighteningrod"]},
         {name: "Pidgeot", height: 0.5, type: ["tackle","twister"]},
@@ -15,7 +16,6 @@ let pokemonRepository = (function () {
         }
     }
 
-
     /* getAll() returns each item in array */
     function getAll() {
         return pokemonList;
@@ -24,15 +24,17 @@ let pokemonRepository = (function () {
     return {
         add: add,
         getAll: getAll,
-    };
-    
+    }; 
 })();
 
-/* forEach() loop returns array items outside of expression */
+/* forEach() loop returns array items outside of expression by using getAll() */
 pokemonRepository.getAll().forEach(function(pokemon) {
-    if ( pokemon.height >= 1 ) {
-        document.write("</p> Name: " + pokemon.name  + " " + "Height: " + pokemon.height + "- thats one big ole pokemon! </br>");
-    } else {
-        document.write("</p> Name: " + pokemon.name  + " " + "Height: " + pokemon.height + " </br>");
-}});
+    const listDisplay = document.querySelector(".pokemon-list");
+    const listItem = document.createElement("li");
+    let button = document.createElement("button");
+    button.innerText = pokemon.name;
+    button.classList.add("btn-styling");
+    listItem.appendChild(button);
+    listDisplay.appendChild(listItem);
+});
 

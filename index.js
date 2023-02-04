@@ -23,14 +23,14 @@ let pokemonRepository = (function () {
 
     /* loadDetails() works with loadList() to get pokemon details */
     function loadDetails(item) {
-        const url = item.detailsURL;
+        let url = item.detailsURL;
         return fetch(url).then(function (response) {
             return response.json();
-        }).then(function (detailsURL) {
+        }).then(function (details) {
             //details will now be added to item
             item.imageUrl = details.sprites.front_default;
             item.height = details.height;
-            item.types = detial.types;
+            item.types = details.types;
         }).catch(function (e) {
             console.error(e);
         });
@@ -38,7 +38,7 @@ let pokemonRepository = (function () {
 
     /* add() adds a new pokemon item into array */
     function add(pokemon) {
-        // if (pokemon.typeof === Object) { /*make sure item is actual object*/
+        // if (pokemon.typeof === "object" && "detailsURL" in pokemon) { /*make sure item is actual object*/
         return pokemonList.push(pokemon);
         // } else {
         // console.log("This is not an object!");
@@ -59,7 +59,6 @@ let pokemonRepository = (function () {
         button.classList.add("btn-display");
         listItem.appendChild(button);
         listDisplay.appendChild(listItem);
-        listenForClick();
     }
 
 /* showDetails() executes when a user clicks a pokemon*/
@@ -69,22 +68,11 @@ let pokemonRepository = (function () {
         });
     }
 
-/* listenForClick() listening for clicks on button that will display a pokemon item */
-    function listenForClick(pokemon) {
-        let button = document.querySelector("button")
-        button.addEventListener("click", function (event) {
-            let target = event.target;
-            target.classList("btn-display");
-            showDetails(pokemon);
-        })
-    }
-
     return {
         add: add,
         getAll: getAll,
         addListItem: addListItem,
         showDetails: showDetails,
-        listenForClick: listenForClick,
         loadList, loadList,
         loadDetails: loadDetails,
     }; 

@@ -6,7 +6,7 @@ body {
     margin-top: 40px;
 }
 
-.btn-styling {
+.btn-display {
     background-color: rgb(156, 0, 0);
     color: white;
     border: none;
@@ -21,7 +21,7 @@ body {
     border-radius: 25px;
 }
 
-.btn-styling:hover {
+.btn-display:hover {
     background-color:  rgb(147, 37, 37);
     color: white;
     border-radius: 25px;

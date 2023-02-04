@@ -71,8 +71,7 @@ let pokemonRepository = (function () {
         });
     }
 
-/* Display modal with pokemon data*/
-
+/* Display a modal with pokemon data*/
     function showModal(title, text) {
         let modalContainer = document. querySelector("#modal-container");
 
@@ -84,6 +83,7 @@ let pokemonRepository = (function () {
         let closeButton = document.createElement("button");
         closeButton.classList.add("modal-close");
         closeButton.innerText = "Close";
+        closeButton.addEventListener("click", hideModal);
 
         let titleElement = document.createElement("h1");
         titleElement.innerText = "Title";
@@ -97,6 +97,12 @@ let pokemonRepository = (function () {
         modalContainer.appendChild(modal);
 
         modalContainer.classList.add("is-visible");
+    }
+
+    /* hides modal on demand */
+      function hideModal() {
+        let modalContainer = document.querySelector("#modal-container");
+        modalContainer.classList.remove("is-visible");
     }
 
     document.querySelector("#show-modal").addEventListener("click", () => {

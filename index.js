@@ -38,11 +38,11 @@ let pokemonRepository = (function () {
 
     /* add() adds a new pokemon item into array */
     function add(pokemon) {
-        // if (pokemon.typeof === "object" && "detailsURL" in pokemon) { /*make sure item is actual object*/
+         if ( typeof pokemon === "object" && "detailsURL" in pokemon) { /*make sure item is actual object*/
         return pokemonList.push(pokemon);
-        // } else {
-        // console.log("This is not an object!");
-        // }
+         } else {
+            console.log("This is not an object!");
+        }
     }
 
     /* getAll() returns each item in array */

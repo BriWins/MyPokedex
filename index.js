@@ -64,7 +64,9 @@ let pokemonRepository = (function () {
 
 /* showDetails() executes when a user clicks a pokemon*/
     function showDetails(pokemon) {
-        console.log(pokemon);
+        loadDetails(pokemon).then(function () {
+            console.log(pokemon);
+        });
     }
 
 /* listenForClick() listening for clicks on button that will display a pokemon item */
@@ -84,6 +86,7 @@ let pokemonRepository = (function () {
         showDetails: showDetails,
         listenForClick: listenForClick,
         loadList, loadList,
+        loadDetails: loadDetails,
     }; 
 })();
 

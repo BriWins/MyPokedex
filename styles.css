@@ -84,3 +84,11 @@ body {
    display: grid;
    text-align: center;
 }
+
+#modal-container {
+    display: none;
+}
+
+#modal-container.is-visible {
+    display: block;
+}

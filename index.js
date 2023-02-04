@@ -71,6 +71,38 @@ let pokemonRepository = (function () {
         });
     }
 
+/* Display modal with pokemon data*/
+
+    function showModal(title, text) {
+        let modalContainer = document. querySelector("#modal-container");
+
+        /* clear modal container */
+        modalContainer.innerHTML = "";
+        let modal = document.createElement("div");
+        modal.classList.add("modal");
+
+        let closeButton = document.createElement("button");
+        closeButton.classList.add("modal-close");
+        closeButton.innerText = "Close";
+
+        let titleElement = document.createElement("h1");
+        titleElement.innerText = "Title";
+
+        let contentElement = document.createElement("p");
+        contentElement.innerText = text;
+
+        modal.appendChild(closeButton);
+        modal.appendChild(titleElement);
+        modal.appendChild(contentElement);
+        modalContainer.appendChild(modal);
+
+        modalContainer.classList.add("is-visible");
+    }
+
+    document.querySelector("#show-modal").addEventListener("click", () => {
+        showModal("Modal Title", "Modal Content");
+    });
+
     return {
         add: add,
         getAll: getAll,

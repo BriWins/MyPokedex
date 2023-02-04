@@ -1,12 +1,25 @@
 /* IIFE to prevent globalness */
 let pokemonRepository = (function () {
   
-    const pokemonList = [
-        {name: "Pikachu", height: 1, type: ["static","lighteningrod"]},
-        {name: "Pidgeot", height: 0.5, type: ["tackle","twister"]},
-        {name: "Pichu", height: 0.3, type: ["kindness","charm"]}
-    ];
+    const pokemonList = [];
+    const apiURL = "https://pokeapi.co/api/v2/pokemon/?limit=150";
     
+    /* loadList() fetches the api detals and passes to loadDetails() */
+    function loadList() {
+        return fetch(apiURL).then(function (response) {
+            return response.json();
+        }).then(function (json) {
+            json.results.forEach(function (item) {
+                let pokemon = {
+                    name: item.name,
+                    detailsURL: item.url 
+                };
+                add(pokemon);
+            });
+        }).catch(function (e) {
+            console.error(e);
+        })
+    }
     /* add() adds a new pokemon item into array */
     function add(pokemon) {
         if (pokemon.typeof === Object.keys(pokemonList)) { /*make sure item is actual object*/
@@ -54,11 +67,15 @@ let pokemonRepository = (function () {
         addListItem: addListItem,
         showDetails: showDetails,
         listenForClick: listenForClick,
+        loadList, loadList,
     }; 
 })();
 
-/* forEach() loop returns array items outside of expression by using getAll() */
-pokemonRepository.getAll().forEach(function(pokemon) {
-   pokemonRepository.addListItem(pokemon);  // this function  is called from within expression
+pokemonRepository.loadList().then(function() {
+    /* forEach() loop returns array items outside of expression by using getAll() */
+    pokemonRepository.getAll().forEach(function(pokemon) {
+        pokemonRepository.addListItem(pokemon);  // this function  is called from within expression
+    });
+ 
 });
 

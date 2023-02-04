@@ -1,6 +1,7 @@
 /* IIFE to prevent globalness */
 let pokemonRepository = (function () {
-  
+    let modalContainer = document. querySelector("#modal-container");
+
     const pokemonList = [];
     const apiURL = "https://pokeapi.co/api/v2/pokemon/?limit=150";
     
@@ -73,8 +74,6 @@ let pokemonRepository = (function () {
 
 /* Display a modal with pokemon data*/
     function showModal(title, text) {
-        let modalContainer = document. querySelector("#modal-container");
-
         /* clear modal container */
         modalContainer.innerHTML = "";
         let modal = document.createElement("div");
@@ -101,18 +100,24 @@ let pokemonRepository = (function () {
 
     /* hides modal on demand */
       function hideModal() {
-        let modalContainer = document.querySelector("#modal-container");
         modalContainer.classList.remove("is-visible");
     }
 
     /* modal closes if user presses esc key */
-    windown.addEventListener("keydown", (e) => {
-        let modalContainer = document.querySelector("#modal-container");
+    window.addEventListener("keydown", (e) => {
         if (e.key === "Escape" && modalContainer.classList.contains("is-visible")) {
             hideModal();
         };
     })
-    
+
+    /* closes modal if user click on the overlay */
+     modalContainer.addEventListener("click", (e) => {
+        let target = e.target;
+        if (target === modalContainer) {
+            hideModal();
+        }
+     });
+
     document.querySelector("#show-modal").addEventListener("click", () => {
         showModal("Modal Title", "Modal Content");
     });

@@ -20,6 +20,22 @@ let pokemonRepository = (function () {
             console.error(e);
         })
     }
+
+    /* loadDetails() works with loadList() to get pokemon details */
+    function loadDetails(item) {
+        const url = item.detailsURL;
+        return fetch(url).then(function (response) {
+            return response.json();
+        }).then(function (detailsURL) {
+            //details will now be added to item
+            item.imageUrl = details.sprites.front_default;
+            item.height = details.height;
+            item.types = detial.types;
+        }).catch(function (e) {
+            console.error(e);
+        });
+    }
+
     /* add() adds a new pokemon item into array */
     function add(pokemon) {
         if (pokemon.typeof === Object.keys(pokemonList)) { /*make sure item is actual object*/
@@ -46,12 +62,12 @@ let pokemonRepository = (function () {
         listenForClick();
     }
 
-/* showDetails() display specific details after details have been fully loaded */
+/* showDetails() executes when a user clicks a pokemon*/
     function showDetails(pokemon) {
         console.log(pokemon);
     }
 
-/* listenForClick listening for clicks on button that will display a pokemon item */
+/* listenForClick() listening for clicks on button that will display a pokemon item */
     function listenForClick(pokemon) {
         let button = document.querySelector("button")
         button.addEventListener("click", function (event) {

@@ -2,7 +2,7 @@
 let pokemonRepository = (function () {
     const pokemonList = [];
     const apiURL = "https://pokeapi.co/api/v2/pokemon/?limit=150";
-    let fullPokemonList = $()
+    let fullPokemonList = $(".pokemon-list");
     
     /* loadList() fetches the api detals and passes to loadDetails() */
     function loadList() {
@@ -24,8 +24,8 @@ let pokemonRepository = (function () {
     /* user can search pokemons by name */
     let searchButton = $(".search-btn");
     searchButton.on("click", function() {
-        filterPokemonList = $(".pokemon-list");
-        filterPokemonList.empty();
+        fullPokemonList = $(".pokemon-list");
+        fullPokemonList.empty();
         searchByName($(".form-control").val()).forEach(function(pokemon) {
             addListItem(pokemon);
         });
@@ -69,7 +69,6 @@ let pokemonRepository = (function () {
         return pokemonList;
     }
    
-
     /* USING JQUERY to showDetails() which executes when a user clicks a pokemon*/
     function showDetails(pokemon) {
 
@@ -116,27 +115,7 @@ function addListItem(pokemon) {
         showDetails(pokemon);
     });
 }
-
-    /* hides modal on demand */
-    //   function hideModal() {
-    //     modalContainer.classList.remove("is-visible");
-    // }
    
-    /* modal closes if user presses esc key */
-    // window.addEventListener("keydown", (e) => {
-    //     if (e.key === "Escape" && modalContainer.classList.contains("is-visible")) {
-    //         hideModal();
-    //     };
-    // })
-
-    /* closes modal if user click on the overlay */
-    //  modalContainer.addEventListener("click", (e) => {
-    //     let target = e.target;
-    //     if (target === modalContainer) {
-    //         hideModal();
-    //     }
-    //  });
-      
     return {
         add: add,
         getAll: getAll,
@@ -144,7 +123,7 @@ function addListItem(pokemon) {
         showDetails: showDetails,
         loadList: loadList,
         loadDetails: loadDetails,
-        searchByName:searchButton,
+        searchByName:searchByName,
     }; 
 })();
 
@@ -154,6 +133,11 @@ pokemonRepository.loadList().then(function() {
         pokemonRepository.addListItem(pokemon);  // this function  is called from within expression
     });
 });
+
+/*******************************************************************************************/
+
+// This code is for testing purposes during my program. also converted a good portion of it into JQUERY. Therefore leaving it here to demonstrate my JS DOM skills for review
+
 
 /* addListItem() displays array list as a button*/
     // function addListItem(pokemon){
@@ -208,3 +192,22 @@ pokemonRepository.loadList().then(function() {
     //     });
     // }
 
+        /* hides modal on demand */
+    //   function hideModal() {
+    //     modalContainer.classList.remove("is-visible");
+    // }
+   
+    /* modal closes if user presses esc key */
+    // window.addEventListener("keydown", (e) => {
+    //     if (e.key === "Escape" && modalContainer.classList.contains("is-visible")) {
+    //         hideModal();
+    //     };
+    // })
+
+    /* closes modal if user click on the overlay */
+    //  modalContainer.addEventListener("click", (e) => {
+    //     let target = e.target;
+    //     if (target === modalContainer) {
+    //         hideModal();
+    //     }
+    //  });

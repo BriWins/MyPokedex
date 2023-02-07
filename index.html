@@ -10,29 +10,51 @@
     </head>
 <body>
     
-  <!-- Nav Section
-    <nav class="navbar">
-        <div class="container">
+   <!-- Nav Section -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
           <a class="navbar-brand" href="#">
-            <img src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="Bootstrap" width="30" height="24">
+            <img src="#" alt="Pokemon Logo" width="30" height="24">
           </a>
           <form class="form-inline">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-warning my-2 my-sm-0 search-btn" type="button">Search</button>
+            <input class="form-control mr-sm-2 my-2 my-sm-8" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-info my-2 my-sm-0 search-btn" type="button">Search</button>
           </form>
         </div>
     </nav>
+
     <main>
-        <h2>Pick Your Pokemon</h2>
-        <div id="modal-container"></div>
-        <ul class="pokemon-list"></ul> 
+      <div class="pokedex">
+        <h1 class="pokemon-haeder display-4">Pick Your Pokemon!</h1>
+        <ul class="pokemon-list list-group"></ul> 
+      </div>
+     
+    <!--  modal -->
+        <div class="modal fade show" id="pokemonModal" role="dialog" tabindex="-1" aria-labelledby="pokemonModal"  padding-right: 18px; aria-modal="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h2 class="modal-title"></h2>
+                  <div class="modal-body"></div>
+                  <button type="button" data-dismiss="modal" class="btn btn-secondary"></button>
+                </div>
+              </div>
+            </div>
+          </div>
+ </main> 
 
+    <!-- JQUERY-->
+    <script
+    src="https://code.jquery.com/jquery-3.6.3.min.js"
+    integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
+    crossorigin="anonymous"></script>
+    <!-- JQUERY-->
 
- </main> --> 
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
 
-<script src="promise-polyfill.js"></script>
-<script src="fetch-polyfill.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-<script src="index.js"></script>
-</body>
+    <script src="promise-polyfill.js"></script>
+    <script src="fetch-polyfill.js"></script>
+    <script src="index.js"></script>
+  </body>
 </html>

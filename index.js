@@ -1,10 +1,8 @@
 /* IIFE to prevent globalness */
 let pokemonRepository = (function () {
-    // let modalContainer = document. querySelector("#modal-container");
-    let modalContainer = $(".modal-container");
-
     const pokemonList = [];
     const apiURL = "https://pokeapi.co/api/v2/pokemon/?limit=150";
+    let fullPokemonList = $()
     
     /* loadList() fetches the api detals and passes to loadDetails() */
     function loadList() {
@@ -120,24 +118,24 @@ function addListItem(pokemon) {
 }
 
     /* hides modal on demand */
-      function hideModal() {
-        modalContainer.classList.remove("is-visible");
-    }
+    //   function hideModal() {
+    //     modalContainer.classList.remove("is-visible");
+    // }
    
     /* modal closes if user presses esc key */
-    window.addEventListener("keydown", (e) => {
-        if (e.key === "Escape" && modalContainer.classList.contains("is-visible")) {
-            hideModal();
-        };
-    })
+    // window.addEventListener("keydown", (e) => {
+    //     if (e.key === "Escape" && modalContainer.classList.contains("is-visible")) {
+    //         hideModal();
+    //     };
+    // })
 
     /* closes modal if user click on the overlay */
-     modalContainer.addEventListener("click", (e) => {
-        let target = e.target;
-        if (target === modalContainer) {
-            hideModal();
-        }
-     });
+    //  modalContainer.addEventListener("click", (e) => {
+    //     let target = e.target;
+    //     if (target === modalContainer) {
+    //         hideModal();
+    //     }
+    //  });
       
     return {
         add: add,
@@ -146,6 +144,7 @@ function addListItem(pokemon) {
         showDetails: showDetails,
         loadList: loadList,
         loadDetails: loadDetails,
+        searchByName:searchButton,
     }; 
 })();
 

@@ -145,5 +145,5 @@
         };
     })();
     
-    pokemonRepository.loadAll();
+    pokemonRepository.loadEverything();
     

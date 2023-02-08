@@ -1,53 +1,58 @@
 html {
     font-size: 100%;
 }
-
+    
 body {
+    background-color: #ffd3cc;
     display: flex;
-    flex-direction: column;
-    background-color: antiquewhite;
     min-height: 100vh;
+    flex-direction: column;
 }
 
-/* Navbar */
-
 .navbar {
-    background-color: blue;
+    background-color: #ff2700;
     line-height: 1;
 }
 
-.search-btn {
-    background-color: blueviolet;
+.navbar-brand {
+    text-transform: uppercase;
+    color: black;
+    font-weight: bold;
+}
+
+.btn-search {
+    background-color: #ffce00;
+    border: none;
+    font-weight: bold;
+}
+
+.btn-search:hover {
+    background-color: #ff2700;
     border: none;
 }
 
-.search-btn:hover {
-    opacity: .5;
-    border: none;
-}
-
-.search-btn, .pokemon-button:active {
+.btn-search:active, .pokemon-button:active {
     background-color: darkred !important;
     color: white !important;
 }
 
-.btn-warning:focus, .pokemon-button:focus, .form-control:focus {
+.btn-search:focus, .pokemon-button:focus, .form-control:focus {
     box-shadow: none !important;
 }
 
 .form-control {
     border: none;
-} 
+}
 
 main {
-    margin: 200px;
+    margin: 20px;
     line-height: 1.5;
     font-size: 1rem;
     text-align: center;
     flex: 1;
 }
 
-h1 {
+.h1 {
     margin: 0;
     font-size: 2.5rem;
     font-weight: 800;
@@ -68,15 +73,20 @@ h3 {
     text-align: left;
 }
 
+h5 {
+    font-weight: bold;
+}
+
 p {
     font-size: 1rem;
     margin-top: 0;
     margin-bottom: 0;
     color: black;
+    font-weight: bold;
 }
 
 a, a:active, a:visited, a:focus {
-    color: black;
+    color: black
 }
 
 .pokemon-list {
@@ -95,23 +105,66 @@ a, a:active, a:visited, a:focus {
     padding: 10px;
     font-size: 1.2rem;
     border: none;
-    background-color: orangered;
+    background-color: #ff2700;
     border-radius: 5px;
     margin: 10px;
     width: 200px;
     transition: 0.4s background-color;
     color: black;
+    font-weight: bold;
 }
 
 .pokemon-button:hover {
-    background-color: orange;
-    cursor: pointer;
-    color: black;
+    background-color:  #ff7900;
+    animation: button-shake 0.4s;
+    color:#ffd3cc;
+}
+
+@keyframes button-shake {
+    0% {transform: translateX(0)}
+    20% {transform: translateX(5px)}
+    40% {transform: translateX(-5px)}
+    60% {transform: translateX(5px)}
+    80% {transform: translateX(-5px)}
+    100% {transform: translateX(0)}
+}
+
+.lds-dual-ring {
+    width: 80px;
+    height: 80px;
+}
+
+.lds-dual-ring-hidden {
+    display: none;
+}
+
+.lds-dual-ring-visible {
+    display: inline-block;
+}
+
+.lds-dual-ring:after {
+    content: " ";
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 6px solid red
+    border-color: red transparent red transparent;
+    animation: lds-dual-ring 1.2s linear infinite;
+}
+
+@keyframes lds-dual-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
 }
 
 .modal-content {
-    background-color: orange;
+    background-color:  #ffce00;
 }
-
 
 

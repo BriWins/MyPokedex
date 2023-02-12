@@ -24,6 +24,8 @@
         function add(pokemon) {
             if (typeof pokemon === "object" && "name" in pokemon && "detailsUrl" in pokemon) {
                 pokemonList.push(pokemon);
+            } else {
+                console.log("This is not a real pokemon object");
             }
         }
 
